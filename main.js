@@ -90,6 +90,19 @@ const contagemRegressiva = ()=>{
        
         songEnd.play()
         alert('Tempo finalizado')
+        const focoAtivo = html.getAttribute('data-contexto') == 'foco'
+             // Se o foco estiver ativo, cria um novo evento customizado chamado 'FocoFinalizado'
+        if(focoAtivo){
+
+            /*
+            O CustomEvent é como um envelope especial que você pode usar para enviar mensagens
+             personalizadas para outras partes da sua aplicação
+            */ 
+            const evento = new CustomEvent('FocoFinalizado')
+                        // Dispara o evento 'FocoFinalizado' para que outras partes da aplicação possam ouvir
+            document.dispatchEvent(evento)
+            
+        }
         zerar()
         return 
         
